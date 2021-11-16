@@ -1,0 +1,129 @@
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+  # Separate frontend
+  development_repo: /c/Users/kxjia/Desktop/CSCI435/CSci435-Fall21-Helion/ha-frontend
+
+lock:
+  - platform: template
+    name: Front Door Doorlock
+    value_template: "{{ is_state('binary_sensor.door', 'off') }}"
+    optimistic: true
+    lock:
+      service: input_select.selection_option
+      data:
+        entity_id: input_select.doorlock
+        option: Locked
+    unlock:
+      service: input_select.selection_option
+      data:
+        entity_id: input_select.doorlock
+        option: Unlocked
+
+cover:
+  - platform: template
+    covers:
+      the_gate:
+        device_class: gate
+        friendly_name: "The Gate"
+        value_template: "{{ states('input_select.status_gate') }}"
+        open_cover:
+          - condition: state
+            entity_id: input_select.status_gate
+            state: 'closed'
+          - service: input_select.select_next
+            entity_id: input_select.status_gate
+        close_cover:
+          - condition: state
+            entity_id: input_select.status_gate
+            state: 'open'
+          - service: input_select.select_next
+            entity_id: input_select.status_gate
+      garage:
+        device_class: garage
+        friendly_name: "Garbage"
+        value_template: "{{ states('input_select.status_garage') }}"
+        open_cover:
+          - condition: state
+            entity_id: input_select.status_garage
+            state: 'closed'
+          - service: input_select.select_next
+            entity_id: input_select.status_garage
+        close_cover:
+          - condition: state
+            entity_id: input_select.status_garage
+            state: 'open'
+          - service: input_select.select_next
+            entity_id: input_select.status_garage
+      blinds:
+        device_class: blind
+        friendly_name: "Blind"
+        value_template: "{{ states('input_select.status_blinds') }}"
+        open_cover:
+          - condition: state
+            entity_id: input_select.status_blinds
+            state: 'closed'
+          - service: input_select.select_next
+            entity_id: input_select.status_blinds
+        close_cover:
+          - condition: state
+            entity_id: input_select.status_blinds
+            state: 'open'
+          - service: input_select.select_next
+            entity_id: input_select.status_blinds
+
+
+input_select:
+  status_garage:
+    name: 'Garage Status'
+    options:
+      - open
+      - closed
+    initial: closed
+
+  status_blinds:
+    name: 'Blinds Status'
+    options:
+      - open
+      - closed
+    initial: closed
+
+  status_gate:
+    name: 'Gate Status'
+    options:
+      - open
+      - closed
+    initial: closed
+
+
+panel_custom:
+  - name: example-panel
+    # url_path needs to be unique for each panel_custom config
+    url_path: redirect-server-controls
+    sidebar_title: Example Panel
+    sidebar_icon: mdi:server
+    module_url: /local/example-panel.js
+    config:
+      # Data you want to make available to panel
+      hello: world
+
+# Lovelace yaml mode
+lovelace:
+  mode: yaml
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+# Example configuration.yaml entry
+weather:
+  - platform: template
+    name: "My Weather Station"
+    condition_template: "{{ states('weather.my_region') }}"
+    temperature_template: "{{ states('sensor.temperature') | float }}"
+    humidity_template: "{{ states('sensor.humidity') | float }}"
+    forecast_template: "{{ state_attr('weather.my_region', 'forecast') }}"
