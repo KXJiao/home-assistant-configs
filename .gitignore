@@ -1,0 +1,6 @@
+.git
+.HA_VERSION
+.cloud
+.storage
+*.db
+*.log
