@@ -3,4 +3,4 @@
 .cloud
 .storage
 *.db
-*.log
+*.log*
