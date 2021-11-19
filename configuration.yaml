@@ -11,44 +11,44 @@ input_select:
     name: Alarm Option
     icon: mdi:panda
     options:
-      - "off"
+      - 'off'
       - siren
       - siren-strobe
       - strobe
-      - "null"
-    initial: "null"
+      - 'null'
+    initial: 'null'
   # SARAH
   fan_osc:
-    name: "Fan osc"
+    name: 'Fan osc'
     options:
-      - "True"
-      - "False"
+      - 'True'
+      - 'False'
   fan_speed:
-    name: "Fan speed"
+    name: 'Fan speed'
     options:
-      - "Increasing"
-      - "Decreasing"
+      - 'Increasing'
+      - 'Decreasing'
   # HANNAH
   doorlock:
     options:
       - Locked
       - Unlocked
   status_garage:
-    name: "Garage Status"
+    name: 'Garage Status'
     options:
       - open
       - closed
     initial: closed
 
   status_gate:
-    name: "Gate Status"
+    name: 'Gate Status'
     options:
       - open
       - closed
     initial: closed
   # KEVIN
   status_blinds:
-    name: "Blinds Status"
+    name: 'Blinds Status'
     options:
       - open
       - closed
@@ -57,26 +57,26 @@ input_select:
   # CONNOR
   # Idk what I'm doing lmao -> Just converting tokens rn
   air_conditioner:
-    name: "AC/Thermostat"
+    name: 'AC/Thermostat'
     options:
       - auto
       - decreased
       - increased
-      - "off"
-    initial: "off"
+      - 'off'
+    initial: 'off'
   air_cooler:
-    name: "Air Cooler/Switch"
+    name: 'Air Cooler/Switch'
     options:
-      - "on"
-      - "off"
-    initial: "off"
+      - 'on'
+      - 'off'
+    initial: 'off'
   # What do we do about attributes ala air purifier?
   # Which template works best for that?
   beacon_device:
-    name: "Beacon Device/Presence"
+    name: 'Beacon Device/Presence'
     options:
-      - "Present"
-      - "Not Present"
+      - 'Present'
+      - 'Not Present'
   blood_pressure_monitor:
     name: "Blood Pressure Monitor/Pressure"
     options:
@@ -102,28 +102,31 @@ input_select:
       - "Off"
   # Glass Break Detector has one status
 
+
+
+
 input_boolean:
   status_fan_power:
-    name: "Fan Power"
+    name: 'Fan Power'
   light_bulb:
   status_roomba_availability:
-    name: "Charlie the Roomba"
+    name: 'Charlie the Roomba'
   status_water_heater_power:
-    name: "Water Heater"
+    name: 'Water Heater'
   status_phone_notification:
-    name: "Phone Notification"
+    name: 'Phone Notification'
   status_oil_warmer:
-    name: "Oil Warmer"
+    name: 'Oil Warmer'
   status_heater:
-    name: "Heater"
+    name: 'Heater'
   status_garden_sprinkler:
-    name: "Garden Sprinkler"
+    name: 'Garden Sprinkler'
   status_moisture_sensor:
-    name: "Moisture Sensor"
+    name: 'Moisture Sensor'
   status_air_cooler_power:
-    name: "Air Cooler"
+    name: 'Air Cooler'
   status_electric_blanket_power:
-    name: "Electric Blanket"
+    name: 'Electric Blanket'
 
 panel_custom:
   - name: example-panel
@@ -155,7 +158,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_water_heater_power
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_water_heater_power
@@ -163,7 +166,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_water_heater_power
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_water_heater_power
@@ -175,7 +178,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_phone_notification
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_phone_notification
@@ -183,7 +186,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_phone_notification
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_phone_notification
@@ -195,7 +198,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_oil_warmer
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_oil_warmer
@@ -203,7 +206,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_oil_warmer
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_oil_warmer
@@ -215,7 +218,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_heater
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_heater
@@ -223,7 +226,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_heater
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_heater
@@ -235,7 +238,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_garden_sprinkler
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_garden_sprinkler
@@ -243,7 +246,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_garden_sprinkler
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_garden_sprinkler
@@ -255,7 +258,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_moisture_sensor
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_moisture_sensor
@@ -263,7 +266,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_moisture_sensor
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_moisture_sensor
@@ -275,7 +278,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_air_cooler_power
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_air_cooler_power
@@ -283,7 +286,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_air_cooler_power
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_air_cooler_power
@@ -295,7 +298,7 @@ switch:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_electric_blanket_power
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_electric_blanket_power
@@ -303,7 +306,7 @@ switch:
         turn_off:
           - condition: state
             entity_id: input_boolean.status_electric_blanket_power
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_electric_blanket_power
@@ -371,14 +374,14 @@ fan:
         turn_on:
           - condition: state
             entity_id: input_boolean.status_fan_power
-            state: "off"
+            state: 'off'
 
           - service: input_boolean.turn_on
             entity_id: input_boolean.status_fan_power
         turn_off:
           - condition: state
             entity_id: input_boolean.status_fan_power
-            state: "on"
+            state: 'on'
 
           - service: input_boolean.turn_off
             entity_id: input_boolean.status_fan_power
@@ -386,7 +389,7 @@ fan:
         set_oscillating:
           - condition: state
             entity_id: input_boolean.status_fan_power
-            state: "on"
+            state: 'on'
 
           - service: input_select.select_next
             entity_id: input_select.fan_osc
@@ -394,7 +397,7 @@ fan:
         set_percentage:
           - condition: state
             entity_id: input_boolean.status_fan_power
-            state: "on"
+            state: 'on'
 
           - service: input_select.select_next
             entity_id: input_select.fan_speed
@@ -415,8 +418,8 @@ light:
         set_level:
           service: input_number.set_value
           data:
-            value: "{{ brightness }}"
-            entity_id: input_number.light_brightness
+              value: "{{ brightness }}"
+              entity_id: input_number.light_brightness
 
 lock:
   - platform: template
@@ -468,6 +471,8 @@ input_number:
 #         entity_id: input_select.doorlock
 #         option: Unlocked
 
+
+
 # Kevin
 # I commented this out for now, just cause it seems to correlate to Kevin's setup
 # # Configure a default setup of Home Assistant (frontend, api, etc)
@@ -485,13 +490,13 @@ cover:
         open_cover:
           - condition: state
             entity_id: input_select.status_gate
-            state: "closed"
+            state: 'closed'
           - service: input_select.select_next
             entity_id: input_select.status_gate
         close_cover:
           - condition: state
             entity_id: input_select.status_gate
-            state: "open"
+            state: 'open'
           - service: input_select.select_next
             entity_id: input_select.status_gate
       garage:
@@ -501,13 +506,13 @@ cover:
         open_cover:
           - condition: state
             entity_id: input_select.status_garage
-            state: "closed"
+            state: 'closed'
           - service: input_select.select_next
             entity_id: input_select.status_garage
         close_cover:
           - condition: state
             entity_id: input_select.status_garage
-            state: "open"
+            state: 'open'
           - service: input_select.select_next
             entity_id: input_select.status_garage
       blinds:
@@ -517,13 +522,13 @@ cover:
         open_cover:
           - condition: state
             entity_id: input_select.status_blinds
-            state: "closed"
+            state: 'closed'
           - service: input_select.select_next
             entity_id: input_select.status_blinds
         close_cover:
           - condition: state
             entity_id: input_select.status_blinds
-            state: "open"
+            state: 'open'
           - service: input_select.select_next
             entity_id: input_select.status_blinds
 

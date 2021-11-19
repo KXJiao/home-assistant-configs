@@ -1,0 +1,45 @@
+#Scripts
+
+vacuum_start:
+  sequence:
+    - alias: "Start Vacuum"
+      service: vacuum.start
+      data:
+        state:
+          - cleaning
+      target:
+        entity_id: vacuum.downstairs_roomba
+
+vacuum_return_to_base:
+  sequence:
+    - alias: "Stop Vacuum"
+      service: vacuum.return_to_base
+      data:
+       state:
+        - returning
+      target:
+        entity_id: vacuum.downstairs_roomba
+
+vacuum_pause:
+  sequence:
+    - alias: "Pause Vacuum"
+      service: vacuum.pause
+      data:
+        state:
+          - paused
+      target:
+        entity_id: vacuum.downstairs_roomba
+
+vacuum_locate_vacuum:
+  sequence:
+    - alias: "Locating Vacuum"
+      target:
+        entity_id: vacuum.downstairs_roomba
+
+vacuum_set_fan_speed:
+  sequence:
+    - alias: "Setting Fan Speed"
+      target:
+        entity_id: vacuum.downstairs_roomba
+  data:
+    speed: "{{ vacuum.downstairs_roomba.fan_speed }}"
