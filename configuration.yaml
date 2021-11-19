@@ -1,99 +1,129 @@
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-  # Separate frontend
-  development_repo: /c/Users/kxjia/Desktop/CSCI435/CSci435-Fall21-Helion/ha-frontend
 
-lock:
-  - platform: template
-    name: Front Door Doorlock
-    value_template: "{{ is_state('binary_sensor.door', 'off') }}"
-    optimistic: true
-    lock:
-      service: input_select.selection_option
-      data:
-        entity_id: input_select.doorlock
-        option: Locked
-    unlock:
-      service: input_select.selection_option
-      data:
-        entity_id: input_select.doorlock
-        option: Unlocked
+# Lovelace yaml mode
+lovelace:
+  mode: yaml
 
-cover:
-  - platform: template
-    covers:
-      the_gate:
-        device_class: gate
-        friendly_name: "The Gate"
-        value_template: "{{ states('input_select.status_gate') }}"
-        open_cover:
-          - condition: state
-            entity_id: input_select.status_gate
-            state: 'closed'
-          - service: input_select.select_next
-            entity_id: input_select.status_gate
-        close_cover:
-          - condition: state
-            entity_id: input_select.status_gate
-            state: 'open'
-          - service: input_select.select_next
-            entity_id: input_select.status_gate
-      garage:
-        device_class: garage
-        friendly_name: "Garbage"
-        value_template: "{{ states('input_select.status_garage') }}"
-        open_cover:
-          - condition: state
-            entity_id: input_select.status_garage
-            state: 'closed'
-          - service: input_select.select_next
-            entity_id: input_select.status_garage
-        close_cover:
-          - condition: state
-            entity_id: input_select.status_garage
-            state: 'open'
-          - service: input_select.select_next
-            entity_id: input_select.status_garage
-      blinds:
-        device_class: blind
-        friendly_name: "Blind"
-        value_template: "{{ states('input_select.status_blinds') }}"
-        open_cover:
-          - condition: state
-            entity_id: input_select.status_blinds
-            state: 'closed'
-          - service: input_select.select_next
-            entity_id: input_select.status_blinds
-        close_cover:
-          - condition: state
-            entity_id: input_select.status_blinds
-            state: 'open'
-          - service: input_select.select_next
-            entity_id: input_select.status_blinds
-
-
+# Example configuration.yaml entry
 input_select:
-  status_garage:
-    name: 'Garage Status'
+  alarm:
+    name: Alarm Option
+    icon: mdi:panda
     options:
-      - open
-      - closed
-    initial: closed
-
-  status_blinds:
-    name: 'Blinds Status'
+      - "off"
+      - siren
+      - siren-strobe
+      - strobe
+      - "null"
+    initial: "null"
+  # SARAH
+  fan_osc:
+    name: "Fan osc"
+    options:
+      - "True"
+      - "False"
+  fan_speed:
+    name: "Fan speed"
+    options:
+      - "Increasing"
+      - "Decreasing"
+  # HANNAH
+  doorlock:
+    options:
+      - Locked
+      - Unlocked
+  status_garage:
+    name: "Garage Status"
     options:
       - open
       - closed
     initial: closed
 
   status_gate:
-    name: 'Gate Status'
+    name: "Gate Status"
+    options:
+      - open
+      - closed
+    initial: closed
+  # KEVIN
+  status_blinds:
+    name: "Blinds Status"
     options:
       - open
       - closed
     initial: closed
 
+  # CONNOR
+  # Idk what I'm doing lmao -> Just converting tokens rn
+  air_conditioner:
+    name: "AC/Thermostat"
+    options:
+      - auto
+      - decreased
+      - increased
+      - "off"
+    initial: "off"
+  air_cooler:
+    name: "Air Cooler/Switch"
+    options:
+      - "on"
+      - "off"
+    initial: "off"
+  # What do we do about attributes ala air purifier?
+  # Which template works best for that?
+  beacon_device:
+    name: "Beacon Device/Presence"
+    options:
+      - "Present"
+      - "Not Present"
+  blood_pressure_monitor:
+    name: "Blood Pressure Monitor/Pressure"
+    options:
+      - "Greater"
+      - "Leser"
+  bread_maker: #Let's get this bread
+    name: "Bread Maker/Switch"
+    options:
+      - "Off"
+      - "On"
+  # Need button entity?
+  # CO-Detector has an alarm/siren?
+  contact_sensor:
+    name: "Contact Sensor/Contact"
+    options:
+      - open
+      - closer
+  # Dust detector is only greater
+  electric_blanket:
+    name: "Electric Blanket/Switch"
+    options:
+      - "On"
+      - "Off"
+  # Glass Break Detector has one status
+
+input_boolean:
+  status_fan_power:
+    name: "Fan Power"
+  light_bulb:
+  status_roomba_availability:
+    name: "Charlie the Roomba"
+  status_water_heater_power:
+    name: "Water Heater"
+  status_phone_notification:
+    name: "Phone Notification"
+  status_oil_warmer:
+    name: "Oil Warmer"
+  status_heater:
+    name: "Heater"
+  status_garden_sprinkler:
+    name: "Garden Sprinkler"
+  status_moisture_sensor:
+    name: "Moisture Sensor"
+  status_air_cooler_power:
+    name: "Air Cooler"
+  status_electric_blanket_power:
+    name: "Electric Blanket"
 
 panel_custom:
   - name: example-panel
@@ -105,10 +135,470 @@ panel_custom:
     config:
       # Data you want to make available to panel
       hello: world
+  - name: example-panel
+    # url_path needs to be unique for each panel_custom config
+    url_path: helion
+    sidebar_title: Helion
+    sidebar_icon: mdi:server
+    module_url: /local/example-panel.js
+    config:
+      # Data you want to make available to panel
+      hello: world
 
-# Lovelace yaml mode
-lovelace:
-  mode: yaml
+switch:
+  - platform: template
+    switches:
+      water_heater:
+        friendly_name: "Water Heater"
+        unique_id: 1
+        value_template: "{{ states('input_boolean.status_water_heater_power') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_water_heater_power
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_water_heater_power
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_water_heater_power
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_water_heater_power
+
+      phone_notification:
+        unique_id: 2
+        friendly_name: "Phone Notification"
+        value_template: "{{ states('input_boolean.status_phone_notification') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_phone_notification
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_phone_notification
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_phone_notification
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_phone_notification
+
+      oil_warmer:
+        unique_id: 3
+        friendly_name: "Oil Warmer"
+        value_template: "{{ states('input_boolean.status_oil_warmer') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_oil_warmer
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_oil_warmer
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_oil_warmer
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_oil_warmer
+
+      heater:
+        unique_id: 4
+        friendly_name: "Heater"
+        value_template: "{{ states('input_boolean.status_heater') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_heater
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_heater
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_heater
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_heater
+
+      garden_sprinkler:
+        unique_id: 5
+        friendly_name: "Garden Sprinkler"
+        value_template: "{{ states('input_boolean.status_garden_sprinkler') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_garden_sprinkler
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_garden_sprinkler
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_garden_sprinkler
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_garden_sprinkler
+
+      moisture_sensor:
+        unique_id: 6
+        friendly_name: "Moisture Sensor"
+        value_template: "{{ states('input_boolean.status_moisture_sensor') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_moisture_sensor
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_moisture_sensor
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_moisture_sensor
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_moisture_sensor
+
+      air_cooler:
+        friendly_name: "Air Cooler"
+        unique_id: 7
+        value_template: "{{ states('input_boolean.status_air_cooler_power') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_air_cooler_power
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_air_cooler_power
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_air_cooler_power
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_air_cooler_power
+
+      electric_blanket:
+        friendly_name: "Electric Blanket"
+        unique_id: 8
+        value_template: "{{ states('input_boolean.status_electric_blanket_power') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_electric_blanket_power
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_electric_blanket_power
+
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_electric_blanket_power
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_electric_blanket_power
+
+  - platform: template
+    switches:
+      skylight:
+        value_template: "{{ is_state('sensor.skylight', 'on') }}"
+        turn_on:
+          service: switch.turn_on
+          target:
+            entity_id: switch.skylight_open
+        turn_off:
+          service: switch.turn_off
+          target:
+            entity_id: switch.skylight_close
+
+# CONNOR
+# entity: alarm_control_panel.real_alarm
+# states:
+#   - arm_home
+#   - arm_away
+# type: alarm-panel
+
+alarm_control_panel:
+  - platform: template
+    panels:
+      safe_alarm_panel:
+        name: Wednesday Alarm
+        arm_away:
+          service: alarm_control_panel.alarm_arm_away
+          target:
+            entity_id: alarm_control_panel.real_alarm
+          data:
+            code: 1234
+        arm_home:
+          service: alarm_control_panel.alarm_arm_home
+          target:
+            entity_id: alarm_control_panel.real_alarm
+          data:
+            code: 1234
+        disarm:
+          # I think this is unnecessary
+          - condition: state
+            entity_id: switch.skylight
+            state: "off"
+          - service: alarm_control_panel.alarm_arm_home
+            target:
+              entity_id: alarm_control_panel.real_alarm
+            data:
+              code: 1234
+
+#SARAH
+fan:
+  - platform: template
+    fans:
+      fan:
+        friendly_name: "Fan"
+        speed_count: 12
+        value_template: "{{ states('input_boolean.status_fan_power') }}"
+        #percentage_template: "{{ states('input_text.status_fan_speed') | int }}"
+        #percentage_template: "{{ states('input_select.fan_speed') }}"
+        #direction_template: "{{ states('input_select.direction') }}"
+        oscillating_template: "{{ states('input_select.fan_osc') }}"
+        turn_on:
+          - condition: state
+            entity_id: input_boolean.status_fan_power
+            state: "off"
+
+          - service: input_boolean.turn_on
+            entity_id: input_boolean.status_fan_power
+        turn_off:
+          - condition: state
+            entity_id: input_boolean.status_fan_power
+            state: "on"
+
+          - service: input_boolean.turn_off
+            entity_id: input_boolean.status_fan_power
+
+        set_oscillating:
+          - condition: state
+            entity_id: input_boolean.status_fan_power
+            state: "on"
+
+          - service: input_select.select_next
+            entity_id: input_select.fan_osc
+
+        set_percentage:
+          - condition: state
+            entity_id: input_boolean.status_fan_power
+            state: "on"
+
+          - service: input_select.select_next
+            entity_id: input_select.fan_speed
+
+# HANNAH
+light:
+  - platform: template
+    lights:
+      light_bulb:
+        friendly_name: "Light Bulb"
+        level_template: "{{ states('input_number.light_brightness') | int }}"
+        turn_on:
+          service: input_boolean.turn_on
+          entity_id: input_boolean.light_bulb
+        turn_off:
+          service: input_boolean.turn_off
+          entity_id: input_boolean.light_bulb
+        set_level:
+          service: input_number.set_value
+          data:
+            value: "{{ brightness }}"
+            entity_id: input_number.light_brightness
+
+lock:
+  - platform: template
+    name: Front Door Doorlock
+    value_template: "{{ is_state('binary_sensor.door', 'off') }}"
+    optimistic: true
+    lock:
+      service: input_select.select_option
+      data:
+        entity_id: input_select.doorlock
+        option: Locked
+    unlock:
+      service: input_select.select_option
+      data:
+        entity_id: input_select.doorlock
+        option: Unlocked
+
+binary_sensor:
+  - platform: template
+    sensors:
+      door:
+        friendly_name: Front Door sensor
+        entity_id: sensor.door
+        device_class: door
+        value_template: "{{ is_state('switch.door', 'on')}}"
+
+input_number:
+  light_brightness:
+    min: 0
+    max: 255
+
+# JESS
+
+# lock:
+#   - platform: template
+#     name: Front Door Lock
+#     value_template: "{{ is_state('sensor.door', 'off') }}"
+#     optimistic: true
+#     lock:
+#       service: input_select.select_option
+#       data:
+#         entity_id: input_select.doorlock
+#         option: Locked
+#       target:
+#         entity_id: switch.door
+#     unlock:
+#       service: input_select.select_option
+#       data:
+#         entity_id: input_select.doorlock
+#         option: Unlocked
+
+# Kevin
+# I commented this out for now, just cause it seems to correlate to Kevin's setup
+# # Configure a default setup of Home Assistant (frontend, api, etc)
+# default_config:
+#   # Separate frontend
+#   development_repo: /c/Users/kxjia/Desktop/CSCI435/CSci435-Fall21-Helion/ha-frontend
+
+cover:
+  - platform: template
+    covers:
+      the_gate:
+        device_class: gate
+        friendly_name: "The Gate"
+        value_template: "{{ states('input_select.status_gate') }}"
+        open_cover:
+          - condition: state
+            entity_id: input_select.status_gate
+            state: "closed"
+          - service: input_select.select_next
+            entity_id: input_select.status_gate
+        close_cover:
+          - condition: state
+            entity_id: input_select.status_gate
+            state: "open"
+          - service: input_select.select_next
+            entity_id: input_select.status_gate
+      garage:
+        device_class: garage
+        friendly_name: "Garbage"
+        value_template: "{{ states('input_select.status_garage') }}"
+        open_cover:
+          - condition: state
+            entity_id: input_select.status_garage
+            state: "closed"
+          - service: input_select.select_next
+            entity_id: input_select.status_garage
+        close_cover:
+          - condition: state
+            entity_id: input_select.status_garage
+            state: "open"
+          - service: input_select.select_next
+            entity_id: input_select.status_garage
+      blinds:
+        device_class: blind
+        friendly_name: "Blind"
+        value_template: "{{ states('input_select.status_blinds') }}"
+        open_cover:
+          - condition: state
+            entity_id: input_select.status_blinds
+            state: "closed"
+          - service: input_select.select_next
+            entity_id: input_select.status_blinds
+        close_cover:
+          - condition: state
+            entity_id: input_select.status_blinds
+            state: "open"
+          - service: input_select.select_next
+            entity_id: input_select.status_blinds
+
+# KYOKO
+
+# logger:
+#   default: debug
+
+# switch:
+#   - platform: template
+#     switches:
+#       water_heater:
+#         friendly_name: "Water Heater"
+#         unique_id: 1
+#         value_template: "{{ states('input_boolean.status_water_heater_power') }}"
+#         turn_on:
+#           - condition: state
+#             entity_id: input_boolean.status_water_heater_power
+#             state: 'off'
+
+#           - service: input_boolean.turn_on
+#             entity_id: input_boolean.status_water_heater_power
+
+#         turn_off:
+#           - condition: state
+#             entity_id: input_boolean.status_water_heater_power
+#             state: 'on'
+
+#           - service: input_boolean.turn_off
+#             entity_id: input_boolean.status_water_heater_power
+
+vacuum:
+  - platform: template
+    vacuums:
+      downstairs_roomba:
+        value_template: "available"
+        battery_level_template: "{{ states('sensor.vacuum_battery') }}"
+        fan_speed_template: "{{ states('sensor.vacuum_fan_speed') }}"
+        availability_template: "{{ states('sensor.vacuum_availability') }}"
+        friendly_name: "Charlie the Roomba"
+        unique_id: 123456789
+        start:
+          # condition: state
+          service: script.vacuum_start
+          data:
+            state:
+              - cleaning
+        pause:
+          # condition: state
+          service: script.vacuum_pause
+          data:
+            state:
+              - paused
+        return_to_base:
+          # condition: state
+          service: script.vacuum_return_to_base
+          data:
+            state:
+              - returning
+        locate:
+          service: script.vacuum_locate_vacuum
+          data:
+            state:
+              - on
+        set_fan_speed:
+          service: script.vacuum_set_fan_speed
+          data:
+            speed: "{{ fan_speed }}"
+            state: on
+        fan_speeds:
+          - Low
+          - Medium
+          - High
+
+# KAITLIN
 
 # Text to speech
 tts:
