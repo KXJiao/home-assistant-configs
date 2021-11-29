@@ -1,0 +1,1023 @@
+title: Helion
+views:
+  - path: default_view
+    title: Helion
+    badges: []
+    cards:
+
+  #####################
+  #    Custom Card    #
+  #####################
+      - type: 'custom:helion-card'
+
+  #######################
+  #   Air Conditioner   #
+  #######################
+      - type: vertical-stack
+        title: 'Air Conditioner'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.air_conditioner_thermostat
+
+  ########################
+  #      Air Cooler      #
+  ########################
+      - type: vertical-stack
+        title: 'Air Cooler'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.air_cooler
+
+  ########################
+  #     Air Purifier     #
+  ########################
+      - type: vertical-stack
+        title: 'Air Purifier'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.air_purifier
+      - type: vertical-stack
+        title: 'Air Purifier'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.air_purifier_air_quality
+
+  ########################
+  #     Audio Player     #
+  ########################
+      - type: vertical-stack
+        title: 'Audio Player'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.audio_player
+
+      - type: vertical-stack
+        title: 'Audio Player'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.audio_player_mute
+
+      - type: vertical-stack
+        title: 'Audio Player'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.audio_player_volume
+
+  ########################
+  #     Audio Sensor     #
+  ########################
+      - type: vertical-stack
+        title: 'Audio Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.audio_sensor_audio
+
+  #########################
+  #     Beacon Device     #
+  #########################
+      - type: vertical-stack
+        title: 'Beacon Device'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.beacon_device_presence
+
+  ##########################
+  # Blood Pressure Monitor #
+  ##########################
+      - type: vertical-stack
+        title: 'Blood Pressure Monitor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.blood_pressure_monitor_pressure
+
+  #####################
+  #    Bread Maker    #
+  #####################
+      - type: vertical-stack
+        title: 'Bread Maker'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.bread_maker
+
+  ####################
+  #      Button      #
+  ####################
+      - type: vertical-stack
+        title: 'Button'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.button_button
+
+  ##########################
+  #     Car Automation     #
+  ##########################
+      - type: vertical-stack
+        title: 'Car Automation'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.car_automation_presence
+
+  #######################
+  #    Clothes Dryer    #
+  #######################
+      - type: vertical-stack
+        title: 'Clothes Dryer'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.clothes_dryer_mode
+      - type: vertical-stack
+        title: 'Clothes Dryer'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.clothes_dryer_lint
+      - type: vertical-stack
+        title: 'Clothes Dryer'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.clothes_dryer_completion
+
+  #######################
+  #     CO Detector     #
+  #######################
+      - type: vertical-stack
+        title: 'CO Detector'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.co_detector_carbon_monoxide
+
+  ############################
+  #     CO Detector Alarm    #
+  ############################
+      - type: vertical-stack
+        title: 'CO Detector Alarm'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.co_detector_alarm
+
+  ########################
+  #    Car Automation    #
+  ########################
+      - type: vertical-stack
+        title: 'Car Automation'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.car_automation
+
+  ######################
+  #    Coffee Maker    #
+  ######################
+      - type: vertical-stack
+        title: 'Coffee Maker'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.coffee_maker
+      - type: vertical-stack
+        title: 'Coffee Maker'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.coffee_maker_temperature
+      - type: vertical-stack
+        title: 'Coffee Maker'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.coffee_maker_water
+
+  ######################
+  #   Contact Sensor   #
+  ######################
+      - type: vertical-stack
+        title: 'Contact Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.contact_sensor_contact
+
+  ######################
+  #     Dishwasher     #
+  ######################
+      - type: vertical-stack
+        title: 'Dishwasher'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.dishwasher
+      - type: vertical-stack
+        title: 'Dishwasher'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.dishwasher_mode
+      - type: vertical-stack
+        title: 'Dishwasher'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.dishwasher_weight
+
+  ###################
+  #    Door Lock    #
+  ###################
+      - type: vertical-stack
+        title: 'Door Lock'
+        cards:
+          - type: entities
+            entities:
+                - entity: input_select.door_lock_auto_lock
+      - type: vertical-stack
+        title: 'Door Lock'
+        cards:
+          - type: entities
+            entities:
+                - entity: input_select.door_lock_child_lock
+      - type: vertical-stack
+        title: 'Door Lock'
+        cards:
+          - type: entities
+            entities:
+                - entity: input_select.door_lock_lock
+      - type: vertical-stack
+        title: 'Door Lock'
+        cards:
+          - type: entities
+            entities:
+                - entity: input_select.door_lock_tamper
+      - type: vertical-stack
+        title: 'Door Lock'
+        cards:
+          - type: entities
+            entities:
+                - entity: input_select.door_lock_battery
+
+  #####################
+  #    Door Sensor    #
+  #####################
+      - type: vertical-stack
+        title: 'Door Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.door_sensor
+      - type: vertical-stack
+        title: 'Door Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.door_sensor_contact
+
+  ##################
+  #    DoorBell    #
+  ##################
+      - type: vertical-stack
+        title: 'DoorBell'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.doorbell_button
+      - type: vertical-stack
+        title: 'DoorBell'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.doorbell_chime
+
+  #####################
+  #   Dust Detector   #
+  #####################
+      - type: vertical-stack
+        title: 'Dust Detector'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.dust_detector_dust
+
+  ######################
+  #  Electric Blanket  #
+  ######################
+      - type: vertical-stack
+        title: 'Electric Blanket'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.electric_blanket
+
+  ######################
+  #    Energy Meter    #
+  ######################
+      - type: vertical-stack
+        title: 'Energy Meter'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.energy_meter_energy
+      - type: vertical-stack
+        title: 'Energy Meter'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.energy_meter_mode
+
+  ######################
+  #    External API    #
+  ######################
+      - type: vertical-stack
+        title: 'External API'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.external_api_news
+      - type: vertical-stack
+        title: 'External API'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.external_api_order
+      - type: vertical-stack
+        title: 'External API'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.external_api_traffic
+
+  #############
+  #    Fan    #
+  #############
+      - type: vertical-stack
+        title: 'Fan'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.fan
+      - type: vertical-stack
+        title: 'Fan'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.fan_speed
+
+  ######################
+  # Garage Door Opener #
+  ######################
+      - type: vertical-stack
+        title: 'Garage Door'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.garage_door_opener_contact
+      - type: vertical-stack
+        title: 'Garage Door'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.garage_door_opener_signal_strength
+
+  ######################
+  #  Garden Sprinkler  #
+  ######################
+      - type: vertical-stack
+        title: 'Garden Sprinkler'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.garden_sprinkler
+
+  ####################
+  #    Gas Sensor    #
+  ####################
+      - type: vertical-stack
+        title: 'Gas Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.gas_sensor_odor_level
+
+  #########################
+  #    Gas Sensor Alarm   #
+  #########################
+      - type: vertical-stack
+        title: 'Gas Sensor Alarm'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.gas_sensor_alarm
+
+
+  ###################
+  #    Gas Stove    #
+  ###################
+      - type: vertical-stack
+        title: 'Gas Stove'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.gas_stove
+
+  ########################
+  # Glass Break Detector #
+  ########################
+      - type: vertical-stack
+        title: 'Glass Break Detector'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.glass_break_detector_shock
+
+  ################
+  #    Heater    #
+  ################
+      - type: vertical-stack
+        title: 'Heater'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.heater
+
+  ####################
+  #    Humidifier    #
+  ####################
+      - type: vertical-stack
+        title: 'Humidifier'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.humidifier
+
+  ########################
+  #    Humidity Sensor   #
+  ########################
+      - type: vertical-stack
+        title: 'Humidity Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.humidity_sensor_humidity
+
+  ########################
+  #  Illuminance Sensor  #
+  ########################
+      - type: vertical-stack
+        title: 'Illuminance Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.illuminance_sensor_illuminance
+
+  #######################
+  #  Induction Cooktop  #
+  #######################
+      - type: vertical-stack
+        title: 'Induction Cooktop'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.induction_cooktop
+
+  ####################
+  #    Irrigation    #
+  ####################
+      - type: vertical-stack
+        title: 'Irrigation'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.irrigation
+
+  ####################
+  #    Light Bulb    #
+  ####################
+      - type: vertical-stack
+        title: "Light Bulb"
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.light_bulb
+      - type: vertical-stack
+        title: "Light Bulb"
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.light_bulb_mode
+      - type: vertical-stack
+        title: "Light Bulb"
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.light_bulb_color_value
+
+  #########################
+  #    Lighting Remote    #
+  #########################
+      - type: vertical-stack
+        title: "Lighting Remote"
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.lighting_remote
+
+  ####################
+  #  Microwave Oven  #
+  ####################
+      - type: vertical-stack
+        title: 'Microwave Oven'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.microwave_oven
+
+  #####################
+  #  Moisture Sensor  #
+  #####################
+      - type: vertical-stack
+        title: 'Moisture Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.moisture_sensor_water
+
+  #####################
+  #   Motion Sensor   #
+  #####################
+      - type: vertical-stack
+        title: 'Motion Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.motion_sensor_motion
+
+  ################
+  #     Null     #
+  ################
+      - type: vertical-stack
+        title: 'Null: Location, Time, Timer'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.null_location_mode
+      - type: vertical-stack
+        title: 'Null: Location, Time, Timer'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.null_time
+      - type: vertical-stack
+        title: 'Null: Location, Time, Timer'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.null_timer
+
+  ####################
+  #    Oil Warmer    #
+  ####################
+      - type: vertical-stack
+        title: 'Oil Warmer'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.oil_warmer
+
+  ##############
+  #    Oven    #
+  ##############
+      - type: vertical-stack
+        title: 'Oven'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.oven
+      - type: vertical-stack
+        title: 'Oven'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.oven_mode
+
+  ###################
+  #    PH Sensor    #
+  ###################
+      - type: vertical-stack
+        title: 'PH Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.ph_sensor_ph
+
+  #############
+  #   Phone   #
+  #############
+      - type: vertical-stack
+        title: 'Phone Notification'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.phone_notification
+
+  ###################
+  # Presence Sensor #
+  ###################
+      - type: vertical-stack
+        title: 'Presence Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.presence_sensor_presence
+
+  ###################
+  #    Projector    #
+  ###################
+      - type: vertical-stack
+        title: 'Projector'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.projector
+
+  ###################
+  #  Pulse Monitor  #
+  ###################
+      - type: vertical-stack
+        title: 'Pulse Monitor'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.pulse_monitor
+      - type: vertical-stack
+        title: 'Pulse Monitor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.pulse_monitor_pulse
+
+  ##################
+  #  Refrigerator  #
+  ##################
+      - type: vertical-stack
+        title: 'Refrigerator'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.refrigerator
+      - type: vertical-stack
+        title: 'Refrigerator'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.refrigerator_mode
+      - type: vertical-stack
+        title: 'Refrigerator'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.refrigerator_temperature
+      - type: vertical-stack
+        title: 'Refrigerator'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.refrigerator_filter_status
+      - type: vertical-stack
+        title: 'Refrigerator'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.refrigerator_contact
+
+  ############################
+  #  Refrigerator Thermostat #
+  ############################
+      - type: vertical-stack
+        title: 'Refrigerator Thermostat'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.refrigerator_thermostat
+
+  ##################
+  #  Robot Vacuum  #
+  ##################
+      - type: vertical-stack
+        title: 'Robot Vacuum'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.robot_vacuum
+
+  ####################
+  #  Security Alarm  #
+  ####################
+      - type: vertical-stack
+        title: 'Security Alarm'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.security_alarm_mode
+      - type: vertical-stack
+        title: 'Security Alarm'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.security_alarm_alarm
+
+  #####################
+  #  Security Camera  #
+  #####################
+      - type: vertical-stack
+        title: 'Security Camera'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.security_camera
+      - type: vertical-stack
+        title: 'Security Camera'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.security_camera_image
+      - type: vertical-stack
+        title: 'Security Camera'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.security_camera_motion
+      - type: vertical-stack
+        title: 'Security Camera'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.security_camera_sound
+      - type: vertical-stack
+        title: 'Security Camera'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.security_camera_video
+
+  #####################
+  #  Security System  #
+  #####################
+      - type: vertical-stack
+        title: 'Security System'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.security_system_mode
+
+  ###################
+  #  Shades/Blinds  #
+  ###################
+      - type: vertical-stack
+        title: 'Shades/Blinds'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.shades_blinds_contact
+      - type: vertical-stack
+        title: 'Shades/Blinds'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.shades_blinds_three_axis
+
+  ###################
+  #  Sleep Monitor  #
+  ###################
+      - type: vertical-stack
+        title: 'Sleep Monitor'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.sleep_monitor
+      - type: vertical-stack
+        title: 'Sleep Monitor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.sleep_monitor_sleeping
+
+  #####################
+  #  Smart Assistant  #
+  #####################
+      - type: vertical-stack
+        title: 'Smart Assistant'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.smart_assistant_voice
+      - type: vertical-stack
+        title: 'Smart Assistant'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.smart_assistant_notification
+
+  #####################
+  #   Smart Battery   #
+  #####################
+      - type: vertical-stack
+        title: 'Smart Battery'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.smart_battery_battery
+
+  ##################
+  #  Smart Mirror  #
+  ##################
+      - type: vertical-stack
+        title: 'Smart Mirror'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.smart_mirror
+
+  ##############
+  #  Smart TV  #
+  ##############
+      - type: vertical-stack
+        title: 'Smart TV'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.smart_tv
+      - type: vertical-stack
+        title: 'Smart TV'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.smart_tv_channel
+
+  ####################
+  #  Smoke Detector  #
+  ####################
+      - type: vertical-stack
+        title: 'Smoke Detector Status'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.smoke_detector_battery
+      - type: vertical-stack
+        title: 'Smoke Detector Status'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.smoke_detector_smoke
+      - type: vertical-stack
+        title: 'Smoke Detector Status'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.smoke_detector_tamper
+
+  #################
+  #    Speaker    #
+  #################
+      - type: vertical-stack
+        title: 'Speaker'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.speaker
+      
+      - type: vertical-stack
+        title: 'Speaker'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.speaker_volume
+
+      - type: vertical-stack
+        title: 'Speaker'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.speaker_mute
+
+  ###################
+  #    Sprinkler    #
+  ###################
+      - type: vertical-stack
+        title: 'Sprinkler'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.sprinkler
+
+  ###################
+  #     Switches    #
+  ###################
+      - type: vertical-stack
+        title: 'Switches'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.switches
+
+  ########################
+  #  Temperature Sensor  #
+  ########################
+      - type: vertical-stack
+        title: 'Temperature Sensor'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.temperature_sensor_temperature
+
+  ##################
+  #   Thermostat   #
+  ##################
+      - type: vertical-stack
+        title: 'Thermostat'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.thermostat_thermostat
+      
+      - type: vertical-stack
+        title: 'Thermostat'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.thermostat_cool_point
+
+  ################
+  #    Washer    #
+  ################
+      - type: vertical-stack
+        title: 'Washer Status'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.washer_completion
+
+  ##################
+  #  Water Heater  #
+  ##################
+      - type: vertical-stack
+        title: 'Water Heater'
+        cards:
+          - type: entities
+            entities:
+              - entity: switch.water_heater
+
+  #########################
+  #  Water Leak Detector  #
+  #########################
+      - type: vertical-stack
+        title: 'Water Leak Detector'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.water_leak_detector_water
+
+  ###################
+  #   Water Valve   #
+  ###################
+      - type: vertical-stack
+        title: 'Water Valve'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.water_valve_contact
+
+  #####################
+  #  Weather Station  #
+  #####################
+      - type: vertical-stack
+        title: 'Weather Station'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.weather_station_cold
+      - type: vertical-stack
+        title: 'Weather Station'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.weather_station_rain
+      - type: vertical-stack
+        title: 'Weather Station'
+        cards:
+          - type: entities
+            entities:
+              - entity: input_select.weather_station_weather
